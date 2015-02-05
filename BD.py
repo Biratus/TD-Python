@@ -22,3 +22,14 @@ def initBDEquipCSV(filepath) :
 		l=readline()
 		if(l==None) break;
 		else :
+			pass
+#Exemple code JSON
+json_file = "data.json"
+
+import json
+
+file_data = open(json_file).read()
+json_data = json.reads(file_data)
+
+for item in json_data["data"]:
+	print(item)
