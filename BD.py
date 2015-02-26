@@ -1,12 +1,14 @@
 import sqlite3
+from Activites import Activites
+import json
 
-conn = sqlite3.connect('installations.db')
+"""conn = sqlite3.connect('installations.db')
 
 c = conn.cursor()
 
 c.execute("DROP TABLE IF EXISTS installations")
 c.execute('''CREATE TABLE installations
-             (Insnom text,InsNumeroInstall integer,ComLib text,ComInsee integer,InsCodePostal integer)''')
+             (InsNumeroInstall integer,ComLib text,ComInsee integer,InsCodePostal integer)''')
 c.execute("DROP TABLE IF EXISTS equipements")
 c.execute('''CREATE TABLE equipements
              (ComInsee integer,ComLib text,InsNumeroInstall integer,EquipementId integer,EquNom text)''')
@@ -22,14 +24,12 @@ def initBDEquipCSV(filepath) :
 		l=readline()
 		if(l==None) break;
 		else :
-			pass
+			pass"""
 #Exemple code JSON
-json_file = "data.json"
+json_file = "BD/Activites.json"
 
-import json
-
-file_data = open(json_file).read()
-json_data = json.reads(file_data)
-
-for item in json_data["data"]:
-	print(item)
+file_data = json.load(open(json_file))
+for item in file_data["data"]:
+	inst=Activites(item["ComInsee"],item["ComLib"],item["EquipementId"],item["ActCode"])
+	print (inst)
+	

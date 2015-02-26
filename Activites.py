@@ -20,3 +20,13 @@ class Activites :
 		self.EquipementId=c;
 	def setActCode(self,c) :
 		self.ActCode=c;
+	def SQLInsert(self,dbName) :
+		return "INSERT INTO {0} VALUES ('{1}','{2}','{3}','{4}')".format(dbName,self.ComInsee,self.ComLib,self.EquipementId,self.ActCode)
+def loadJsonFile() :
+	json_file = "BD/Activites.json"
+	tab=[]
+	file_data = json.load(open(json_file))
+	for item in file_data["data"]:
+		tab.append(Activites(item["ComInsee"],item["ComLib"],item["EquipementId"],item["ActCode"]))
+	return tab
+	
